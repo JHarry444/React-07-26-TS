@@ -1,0 +1,18 @@
+.lifting-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.lifting-container form {
+    max-width: fit-content;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    justify-items: start;
+    gap: 1rem;
+}
+
+.trainers-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}

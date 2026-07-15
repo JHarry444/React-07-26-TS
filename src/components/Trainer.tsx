@@ -1,10 +1,10 @@
 // React components MUST start with a capital letter
-export type TrainerProps = {
+export type TrainerType = {
     name: string;
     age: number;
-    specialty: string;
+    specialty?: string;
 }
-function Trainer({ name, age, specialty }: TrainerProps) {
+function Trainer({ name, age, specialty }: TrainerType) {
     console.log("PROPS:", { name, age, specialty });
 
     return (
@@ -12,7 +12,7 @@ function Trainer({ name, age, specialty }: TrainerProps) {
             <p>Name: {name}</p>
             {/* use {} to insert code */}
             <p>Age: {age}</p>
-            <p>Specialty: {specialty}</p>
+            {specialty && <p>Specialty: {specialty}</p>}
         </div>
     )
 }
