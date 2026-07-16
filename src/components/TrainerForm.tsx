@@ -1,5 +1,7 @@
 import { useRef, useState } from "react";
 import type { TrainerType } from "./Trainer";
+import { useDispatch } from "react-redux";
+import { addTrainer } from "../redux/trainers";
 
 // function TrainerForm() {
 //     // name, age and specialty are all 'controlled components', meaning their values are controlled by react state
@@ -23,13 +25,15 @@ import type { TrainerType } from "./Trainer";
 // export default TrainerForm;
 
 
-function TrainerForm({ setTrainers }: { setTrainers: React.Dispatch<React.SetStateAction<TrainerType[]>> }) {
+function TrainerForm() {
     // name, age and specialty are all 'controlled components', meaning their values are controlled by react state
     const [data, setData] = useState<TrainerType>({
         name: "",
         age: 0,
         specialty: ""
     });
+
+    const dispatch = useDispatch();
 
     const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -43,7 +47,7 @@ function TrainerForm({ setTrainers }: { setTrainers: React.Dispatch<React.SetSta
                 body: JSON.stringify(data)
             });
             if (res.status === 201) {
-                setTrainers(prev => [...prev, data]);
+                dispatch(addTrainer(data));
                 setData({
                     name: "",
                     age: 0,

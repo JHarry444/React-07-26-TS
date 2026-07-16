@@ -1,25 +1,25 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import { setTrainers } from "../../redux/trainers";
 import ListTrainers from "../ListTrainers";
 import TrainerForm from "../TrainerForm";
 import './lifting.css';
-import type { TrainerType } from "../Trainer";
-
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState } from "../../redux/store";
 
 function LiftingStatePage() {
-    const [trainers, setTrainers] = useState<TrainerType[]>([]);
     const [filter, setFilter] = useState("");
-
+    const trainers = useSelector((state: RootState) => state.trainers);
     // componentDidMount equivalent
-
-    const fetchTrainers = async () => {
+    const dispatch = useDispatch();
+    const fetchTrainers = useCallback(async () => {
         try {
             const res = await fetch("http://localhost:8080/trainers")
             const data = await res.json();
-            setTrainers(data);
+            dispatch(setTrainers(data));
         } catch (error) {
             console.error("Error fetching trainers:", error);
         }
-    }
+    }, [dispatch]);
 
     useEffect(() => {
         const trainerInterval = setInterval(fetchTrainers, 5_000);
@@ -36,8 +36,10 @@ function LiftingStatePage() {
 
         fetchTrainers();
 
-    }, [filter]);
+    }, [filter, fetchTrainers]);
     // only runs once when the component mounts, because of the empty dependency array
+    console.log("TRAINERS:", trainers);
+
     return (
         <>
             <h1>Lifting State</h1>
@@ -49,7 +51,7 @@ function LiftingStatePage() {
                     />
                 </div>
                 <div>
-                    <TrainerForm setTrainers={setTrainers} />
+                    <TrainerForm />
                 </div>
             </section>
 

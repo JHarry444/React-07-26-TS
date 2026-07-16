@@ -1,0 +1,47 @@
+{
+  "trainers": [
+    {
+      "id": "abcd",
+      "name": "JH",
+      "age": 32,
+      "specialty": "Java"
+    },
+    {
+      "id": "efgh",
+      "name": "CG",
+      "age": 33,
+      "specialty": "Web"
+    },
+    {
+      "id": "ijkl",
+      "name": "MS",
+      "age": 45,
+      "specialty": "Oracle"
+    },
+    {
+      "name": "pb",
+      "age": 28,
+      "specialty": "devop",
+      "id": "p1D7nieaalg"
+    },
+    {
+      "name": "asd",
+      "age": 23,
+      "specialty": "dfs",
+      "id": "9KsgnV7NQOU"
+    },
+    {
+      "name": "BARRY",
+      "age": 25,
+      "specialty": "ALLENING",
+      "id": "Ir0NkSpIaRY"
+    },
+    {
+      "name": "bat",
+      "age": 45,
+      "specialty": "man",
+      "id": "mgR37_WA7no"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
